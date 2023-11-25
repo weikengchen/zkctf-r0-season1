@@ -7,6 +7,8 @@ Contestants are asked to design inputs to the guest program running inside the R
 Note that this means that a correct receipt (i.e., a zero-knowledge proof) is needed in order to have RISC Zero accept the submission.
 
 If you solve this challenge, send your solution to Weikeng Chen at w.k@berkeley.edu . 
+
+## Prize
 I am prepared to give out some small cash prizes (around $20 each) to the earliest 20 qualified submissions.
 
 ## Code
