@@ -76,4 +76,7 @@ fn main() {
 
 ## Hints
 Although I am not going to give out problem-specific hints, people who want to understand RISC Zero, particularly low-level details, may benefit from this blog article:
+
+**Tech Deep Dive: Verifying FHE in RISC Zero, Part I**
+
 https://l2ivresearch.substack.com/p/tech-deep-dive-verifying-fhe-in-risc
