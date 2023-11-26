@@ -11,6 +11,8 @@ If you solve this challenge, send your solution to Weikeng Chen at w.k@berkeley.
 ## Prize
 I am prepared to give out some small cash prizes (around $20 each) to the earliest 20 qualified submissions.
 
+We have already received `1` qualified submission. 
+
 ## Code
 ```rust
 use risc0_zkvm::{default_prover, ExecutorEnv};
