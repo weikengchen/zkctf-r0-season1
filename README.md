@@ -16,8 +16,16 @@ I am prepared to give out some small cash prizes (around $20 each) to the earlie
 use risc0_zkvm::{default_prover, ExecutorEnv};
 
 const PROGRAM_CODE: &'static [u8] = include_bytes!("code");
-const PROGRAM_ID: [u32; 8] =
-    [4089023768u32, 3145240833u32, 1747178994u32, 3214649236u32, 3131642364u32, 1474811960u32, 1082230595u32, 3832750910u32];
+const PROGRAM_ID: [u32; 8] = [
+    4089023768u32,
+    3145240833u32,
+    1747178994u32,
+    3214649236u32,
+    3131642364u32,
+    1474811960u32,
+    1082230595u32,
+    3832750910u32,
+];
 
 fn main() {
     /***************************************************************/
@@ -39,30 +47,29 @@ fn main() {
 
     let prover = default_prover();
 
+    if prover.get_name() != "bonsai" {
+        println!("You are recommended to use the Bonsai API for best experience if you have the Bonsai API key.");
+    }
+
     let mut success_flag = true;
 
-    if prover.get_name() != "bonsai" {
-        println!("Please use Bonsai API for best experience.");
+    let receipt = prover.prove_elf(env, PROGRAM_CODE);
+
+    let expected = b"You have successfully solved this RISC Zero challenge.".to_vec();
+
+    if receipt.is_err() {
         success_flag = false;
     } else {
-        let receipt = prover.prove_elf(env, PROGRAM_CODE);
+        let receipt = receipt.unwrap();
 
-        let expected = b"You have successfully solved this RISC Zero challenge.".to_vec();
-
-        if receipt.is_err() {
+        let verify_result = receipt.verify(PROGRAM_ID);
+        if verify_result.is_err() {
             success_flag = false;
-        } else {
-            let receipt = receipt.unwrap();
+        }
 
-            let verify_result = receipt.verify(PROGRAM_ID);
-            if verify_result.is_err() {
-                success_flag = false;
-            }
-
-            let data = receipt.journal.bytes;
-            if data != expected {
-                success_flag = false;
-            }
+        let data = receipt.journal.bytes;
+        if data != expected {
+            success_flag = false;
         }
     }
 
@@ -72,6 +79,7 @@ fn main() {
         println!("Try again!");
     }
 }
+
 ```
 
 ## Hints
