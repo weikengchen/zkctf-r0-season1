@@ -1,4 +1,4 @@
-# Catch the flag competition over RISC Zero
+# Catch the flag competition over RISC Zero (Season 1)
 
 This repo contains a catch-the-flag challenge in RISC Zero. 
 
